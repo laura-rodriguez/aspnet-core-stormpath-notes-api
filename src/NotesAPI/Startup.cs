@@ -47,16 +47,12 @@ namespace NotesAPI
                     Produces = new[] { "application/json" },
                     Oauth2 = new WebOauth2RouteConfiguration()
                     {
-                        Uri = "/token",
-                        Password = new WebOauth2PasswordGrantConfiguration()
-                        {
-                            ValidationStrategy = WebOauth2TokenValidationStrategy.Stormpath
-                        }
+                        Uri = "/token"
                     }
                 }
             });
 
-            services.AddTransient<AccountService>();
+            services.AddTransient<AccountNotesService>();
 
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);

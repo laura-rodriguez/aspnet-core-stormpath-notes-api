@@ -9,21 +9,16 @@ using System.Threading.Tasks;
 
 namespace NotesAPI.Services
 {
-    public class AccountService
+    public class AccountNotesService
     {
         private readonly IApplication stormpathApplication;
         public static readonly string NOTES_CUSTOM_DATA_KEY = "notes";
 
-        public AccountService(IApplication stormpathApplication)
+        public AccountNotesService(IApplication stormpathApplication)
         {
             this.stormpathApplication = stormpathApplication;
         }
-
-        private async Task<IAccount> GetUserAccount(IIdentity userIdentity)
-        {
-            return await stormpathApplication.GetAccounts().Where(x => x.Email == userIdentity.Name).FirstOrDefaultAsync();
-        }
-
+        
         public async Task<string> GetUserNotes(IAccount userAccount)
         {
             var accountCustomData = await userAccount.GetCustomDataAsync();

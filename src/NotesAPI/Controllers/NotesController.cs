@@ -16,10 +16,10 @@ namespace NotesAPI.Controllers
     [Route("api/[controller]")]
     public class NotesController : Controller
     {
-        private AccountService _accountService;
-        private IAccount _account;
+        private readonly AccountNotesService _accountService;
+        private readonly IAccount _account;
 
-        public NotesController(IAccount account, AccountService accountService)
+        public NotesController(IAccount account, AccountNotesService accountService)
         {
             _account = account;
             _accountService = accountService;
